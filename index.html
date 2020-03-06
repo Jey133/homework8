@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Homework8</title>
+</head>
+<body>
+
+<script>
+	
+	function Student (firstName, lastName, birthYear){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthYear = birthYear;
+		this.attendanceArray = [];
+		this.markArray = [];
+		this.age = function () {
+			return new Date().getFullYear() - this.birthYear;
+		};
+
+		this.averageMark = function () {
+			let arraySum = this.markArray.reduce(function(array, currentMark){
+				return array + currentMark;}, 0
+			);
+			return arraySum / this.markArray.length;
+		};
+
+		function pushToArray (array, value) {
+			let index = 0;
+			let freeIndex;
+			while (typeof freeIndex === "undefined" && index < 30) {
+				if (typeof array[index] === "undefined") {
+					freeIndex = index;
+				} else {
+					index++;
+				}
+			}
+			if(typeof freeIndex !== "undefined") {
+				array[freeIndex] = value;
+			}
+		};
+
+		this.present = function () {
+			pushToArray(this.attendanceArray, true);
+		};
+		this.absent = function () {
+			pushToArray(this.attendanceArray, false);
+		};
+		this.mark = function (mark) {
+			if(typeof mark !== "undefined" && mark > 0 && mark <= 10) {
+				pushToArray(this.markArray, mark);			
+		};
+
+		function attendance (array){
+			let counter = 0;
+			for (var i = 0; i < array.length; i++) {
+				if(array[i] === true){
+					counter++;
+				}
+			}
+			console.log("counter", counter);
+			return counter/array.length;
+		}
+
+		this.summary = function () {
+			let avgMark = this.averageMark(this.markArray);
+			console.log("mark", avgMark);
+			let atdPercent = attendance(this.attendanceArray);
+			console.log("percent", atdPercent);
+			if(avgMark > 9 && atdPercent > 0.9) {
+				return "Ути какой молодчинка!";	
+			} else if(avgMark > 9 || atdPercent > 0.9){
+				return "Норм, но можно лучше";
+			} else {
+				return "Редиска!";
+			}
+		}
+	}
+	
+</script>
+
+</body>
+</html>
