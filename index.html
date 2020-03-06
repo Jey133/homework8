@@ -64,9 +64,7 @@
 
 		this.summary = function () {
 			let avgMark = this.averageMark(this.markArray);
-			console.log("mark", avgMark);
 			let atdPercent = attendance(this.attendanceArray);
-			console.log("percent", atdPercent);
 			if(avgMark > 9 && atdPercent > 0.9) {
 				return "Ути какой молодчинка!";	
 			} else if(avgMark > 9 || atdPercent > 0.9){
