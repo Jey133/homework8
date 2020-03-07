@@ -48,7 +48,8 @@
 		};
 		this.mark = function (mark) {
 			if(typeof mark !== "undefined" && mark > 0 && mark <= 10) {
-				pushToArray(this.markArray, mark);			
+				pushToArray(this.markArray, mark);
+				}			
 		};
 
 		function attendance (array){
@@ -59,7 +60,7 @@
 				}
 			}
 			return counter/array.length;
-		}
+		};
 
 		this.summary = function () {
 			let avgMark = this.averageMark(this.markArray);
@@ -71,8 +72,11 @@
 			} else {
 				return "Редиска!";
 			}
-		}
+		};
 	}
+
+	const Dmitriy = new Student("Dmitriy", "Mosienko", 1988);
+
 	
 </script>
 
